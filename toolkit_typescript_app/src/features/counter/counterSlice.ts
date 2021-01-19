@@ -14,7 +14,7 @@ const initialState: CounterState = {
 // Slice is an object that contains a Reducer function as a field name - key
 // basically, a slice is a store part responsible for a SINGLE FEATURE - global state object. 
 export const counterSlice = createSlice({
-  // A SLICE name, used in action types in the store - type :"counter/increment"
+  // A SLICE name, used in action types in the store with Action Creator- type :"counter/increment"
   name: 'counter', // 'counter' state object in our store
 
   // On regular reducer: const counterReducer = (state, action) => {switch{}}
@@ -52,8 +52,10 @@ export const counterSlice = createSlice({
   },
 });
 
-// Note: Slice will automatically give us Action Types 
-// Exporting Actions
+// Note: Slice will automatically give us Action Types - Action Creators
+// Note: These are NOT reducers functions above. 
+// These are Action Creators with the same name as reducers. 
+// you can change name by doing - increment: incrementAction
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -70,8 +72,9 @@ export const incrementAsync = (amount: number): AppThunk => dispatch => {
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 // Create and export the selector:
-export const selectCount = (state: RootState) => state.counter.value;
+export const selectCount = (state: RootState) => state.counter.value; 
+// Accessing 'counter' object of Global State in Store
 
 // It is a convention to export reducer as a default export
-// Exporting this reducer as counterReducer
+// Exporting this counterSlice as counterReducer
 export default counterSlice.reducer; // export reducer
