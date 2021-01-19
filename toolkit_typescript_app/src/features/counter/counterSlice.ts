@@ -46,6 +46,8 @@ export const counterSlice = createSlice({
 
     // NOTE: Here, incrementByAmount is type & it's payload is PayloadAction
     // Pass in Action Creator's payload value in PayloadAction<here>
+    // NOTE: first arg - 'state' is the reference to the initial State of the reducer
+    // Second arg - 'action' is Action object which has Type & Payload, can be destructure
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
