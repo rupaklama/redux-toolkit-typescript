@@ -52,7 +52,7 @@ export const counterSlice = createSlice({
   },
 });
 
-// Note: Slice will automatically give us Action Types - Action Creators
+// Note: Slice will automatically/dynamically give us Action Types - Action Creators
 // Note: These are NOT reducers functions above. 
 // These are Action Creators with the same name as reducers. 
 // you can change name by doing - increment: incrementAction
@@ -74,6 +74,8 @@ export const incrementAsync = (amount: number): AppThunk => dispatch => {
 // Create and export the selector:
 export const selectCount = (state: RootState) => state.counter.value; 
 // Accessing 'counter' object of Global State in Store
+// To make the Counter State accessible & reusable everywhere in other components
+// for DRY code. 
 
 // It is a convention to export reducer as a default export
 // Exporting this counterSlice as counterReducer
